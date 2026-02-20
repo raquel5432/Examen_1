@@ -82,19 +82,28 @@ public class AGREGAR extends JFrame {
             }
         }
 
-        ImageIcon img = new ImageIcon(ruta);
-
+            ImageIcon img = null;
+            try {
+                img = new ImageIcon(ruta);
+                if(img.getIconWidth() == -1) { // Imagen no cargó correctamente
+                    JOptionPane.showMessageDialog(this, "Ruta de imagen inválida, se usará ícono por defecto");
+                    img = new ImageIcon(); // Imagen vacía
+                }
+            } catch(Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error al cargar imagen, se usará ícono por defecto");
+                img = new ImageIcon();
+            }
             if(tipo.equals("Movie")){
                try{
                    double precio = Double.parseDouble(txtPrecio.getText());
-                   items.add(new ClaseMovie(cod, nombre, precio, 1, img)); 
+                   items.add(new ClaseMovie(cod, nombre, precio,0, img)); 
                }catch(Exception ex){
                    JOptionPane.showMessageDialog(this,"Precio inválido");
                    return;
                }
            }
          else {
-           // items.add(new GAME(cod,nombre,img));
+            items.add(new GAME(cod,nombre,img));
         }
 
         textArea.append("Item agregado: "+cod+" - "+nombre+"\n");

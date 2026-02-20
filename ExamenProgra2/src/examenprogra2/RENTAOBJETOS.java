@@ -53,11 +53,19 @@ public class RENTAOBJETOS extends JFrame {
         centerPanel.add(btnSalir);
         add(centerPanel, BorderLayout.CENTER);
         
-        btnAgregar.addActionListener(e -> agregarItem());
-        btnRentar.addActionListener(e -> new VENTANARENTAR(items, textArea));
-        btnSubmenu.addActionListener(e -> ejecutarSubmenu());
-        btnImprimir.addActionListener(e -> ImprimirTodo());
-        btnSalir.addActionListener(e -> System.exit(0));
+        btnAgregar.addActionListener(e -> new AGREGAR(items, textArea));
+btnRentar.addActionListener(e -> new VENTANARENTAR(items, textArea));
+btnSubmenu.addActionListener(e -> {
+    String cod = JOptionPane.showInputDialog("Codigo del Item:");
+    if(cod==null) return;
+    RentItem r = null;
+    for(RentItem ri: items){
+        if(ri.getCode().equals(cod)){ r = ri; break; }
+    }
+    if(r != null) new SubMenu(r);
+});
+btnImprimir.addActionListener(e -> new VentanaImprimir(items));
+btnSalir.addActionListener(e -> System.exit(0));
     }
     
     
@@ -94,36 +102,7 @@ public class RENTAOBJETOS extends JFrame {
         return null;
     }
 
-    
-    private void ejecutarSubmenu(){
-        String cod = JOptionPane.showInputDialog(this,"Codigo dle item: ");
-        if(cod==null)return;
-        RentItem r = buscar(cod);
-        
-        if(r ==null){
-            JOptionPane.showMessageDialog(this,"Item no existe");
-            return;
-        }
-        
-        if(r instanceof MenuActions){
-            ((MenuActions)r).subMenu();
-        }else{
-            JOptionPane.showMessageDialog(this,"Este item no tiene submenu.");
-        }
-    }
-    
-    private void ImprimirTodo(){
-        if(items.isEmpty()){
-            textArea.setText("No hay items\n");
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        for(RentItem r: items){
-            sb.append("---------------");
-            sb.append(r.toString()).append("\n");
-        }
-        textArea.setText(sb.toString());
-    }
-    
+
+ 
     
 }
