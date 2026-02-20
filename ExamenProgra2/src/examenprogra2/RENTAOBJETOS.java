@@ -55,9 +55,10 @@ public class RENTAOBJETOS extends JFrame {
             });
     }
     
+    
     private boolean codigoExiste(String cod){
          for(RentItem r: items){
-             if(r.getCodigo().equals(cod))
+             if(r.getCode().equals(cod))
                  return true;
         }
          return false;
