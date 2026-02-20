@@ -43,7 +43,9 @@ public class RENTAOBJETOS extends JFrame {
         JButton btnSubmenu= new JButton("Submenu");
         JButton btnImprimir= new JButton ("Imprimir Todo");
         JButton btnSalir = new JButton ("Salir");
-              
+        
+
+        
         centerPanel.add(btnAgregar);
         centerPanel.add(btnRentar);
         centerPanel.add(btnSubmenu);
@@ -80,39 +82,7 @@ public class RENTAOBJETOS extends JFrame {
         }
         
     private void agregarItem(){
-        String[]opciones ={"Movie","Game"};
-        int tipo = JOptionPane.showOptionDialog(this, "Seleccione tipo:","Agregar",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[0]);
-        if(tipo==-1)return;
-        
-        String cod = JOptionPane.showInputDialog(this,"Codigo: ");
-        if(cod == null || cod.trim().isEmpty())return;
-        if(codigoExiste(cod)){
-            JOptionPane.showMessageDialog(this, "Codigo duplicado.");
-            return;
-        }
-        
-        String nombre = JOptionPane.showInputDialog(this,"Nombre: ");
-        if(nombre==null||nombre.trim().isEmpty()) return;
-        
-        ImageIcon img = cargarImagen();
-        
-        if(tipo ==0){
-            String precioStr = JOptionPane.showInputDialog(this,"Precio Base: ");
-            if(precioStr == null) return;
-            double precio;
-            try{
-                precio = Double.parseDouble(precioStr);
-                
-            }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(this,"Precio invalido");
-                return;
-            }
-            items.add(new Movie(cod,nombre, precio, img));  
-        }else{
-            items.add(new Game(cod,nombre, img));
-        }
-        
-        textArea.append("Item agregado: "+cod+"-"+nombre+"\n");
+          new AGREGAR(items, textArea);
         
     }
 
