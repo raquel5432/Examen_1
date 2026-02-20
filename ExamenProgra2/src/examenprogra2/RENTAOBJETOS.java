@@ -6,8 +6,10 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -64,6 +66,19 @@ public class RENTAOBJETOS extends JFrame {
          return false;
     }
     
+    
+    private ImageIcon cargarImagen() {
+          try {
+            String path = JOptionPane.showInputDialog(this, "Ingrese LS ruta de  imagen:");
+            if (path == null) return null;
+            return new ImageIcon(path);
+          } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Imagen no cargada.");
+            return null;
+            }
+        }
+        
+         
 
     
     
