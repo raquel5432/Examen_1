@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 public class RENTAOBJETOS extends JFrame {
     private JTextArea textArea;
     private ArrayList<RentItem>items;
+    
+    
     public RENTAOBJETOS(){
         iniciar();
     }
@@ -52,6 +54,16 @@ public class RENTAOBJETOS extends JFrame {
                 }
             });
     }
+    
+    private boolean codigoExiste(String cod){
+         for(RentItem r: items){
+             if(r.getCodigo().equals(cod))
+                 return true;
+        }
+         return false;
+    }
+    
+
     
     
 }
