@@ -1,6 +1,7 @@
 
 package examenprogra2;
 
+
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -9,16 +10,23 @@ import javax.swing.JOptionPane;
 
 
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+
 
 public class GAME extends RentItem implements MenuActions{
     private Calendar fechaPublicacion;
     private ArrayList<String> especificaciones;
-    
+   
     public GAME(String codigo, String nombre, ImageIcon imagen){
         super(codigo, nombre, 20, 0, imagen);
         fechaPublicacion = Calendar.getInstance();
         especificaciones = new ArrayList<>();
     }
+
     
     public void setFechaPublicacion(int y, int m, int d){
         fechaPublicacion.set(y, m - 1, d);

@@ -115,8 +115,7 @@ public class AGREGAR extends JFrame {
                     if(imgURL != null) {
                         img = new ImageIcon(imgURL);
                     } else {
-                        img = new ImageIcon(); // Si no encuentra la imagen por defecto
-                        JOptionPane.showMessageDialog(this, "No se encontro imagen por defecto");
+                        img = new ImageIcon(); 
                     }
                 } else {
                     img = new ImageIcon(ruta);
