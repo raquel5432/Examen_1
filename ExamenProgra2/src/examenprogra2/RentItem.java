@@ -45,13 +45,13 @@ public abstract class RentItem {
         return image;
     }
     
- 
-    public String ToString(){
-        return "Codigo: " + Code +
-               "\nNombre: " + Name +
-               "\nPrecio Base: " + precioBase +
-               "\nCopias: " + copies;
-    }
+ @Override
+public String toString() {
+    return "Codigo: " + Code +
+           "\nNombre: " + Name +
+           "\nPrecio Base: L." + precioBase +
+           "\nCopias: " + copies;
+}
     
     public abstract double pagoRenta(int dias);
 }
