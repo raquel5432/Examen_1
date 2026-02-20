@@ -78,7 +78,20 @@ public class RENTAOBJETOS extends JFrame {
             }
         }
         
-         
+    private void agregarItem({
+        String[]opciones ={"Movie","Game"};
+        int tipo = JOptionPane.showOptionDialog(this, "Seleccione tipo:","Agregar",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[0]);
+        if(tipo==-1)return;
+        
+        String cod = JOptionPane.showInputDialog(this,"Codigo: ");
+        if(cod == null || cod.trim().isEmpty())return;
+        if(codigoExiste(cod)){
+            JOptionPane.showMessageDialog(this, "Codigo duplicado.");
+            return;
+        }
+        
+        
+    });
 
     
     
