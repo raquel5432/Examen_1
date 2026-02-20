@@ -45,6 +45,7 @@ public abstract class RentItem {
         return image;
     }
     
+ 
     public String ToString(){
         return "Codigo: " + Code +
                "\nNombre: " + Name +
