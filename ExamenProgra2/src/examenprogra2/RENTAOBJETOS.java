@@ -153,8 +153,13 @@ public class RENTAOBJETOS extends JFrame {
             return;
         }
         
+        double total = r.pagoRenta(dias);
+        textArea.append("Renta de"+cod+"por"+dias+"dias: TOTAL l."+total+"\n");
+        JOptionPane.showMessageDialog(this,"Total a pagar: L. "+total);
         
     }
+    
+    
     
     
     
