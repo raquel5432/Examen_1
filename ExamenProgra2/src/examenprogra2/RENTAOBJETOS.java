@@ -130,5 +130,32 @@ public class RENTAOBJETOS extends JFrame {
         return null;
     }
     
+    private void rentarItem(){
+        String cod = JOptionPane.showInputDialog(this,"Codigo del item a rentar: ");
+        if(cod ==null)return;
+        RentItem r = buscar(cod);
+        
+        if(r == null){
+            JOptionPane.showMessageDialog(this, "Item no existe");
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(this, r.toString(), "Datos del Item",
+        JOptionPane.INFORMATION_MESSAGE,r.getImaged());
+        
+        String diasStr = JOptionPane.showInputDialog(this,"Dias a rentar: ");
+        if(diasStr==null)return;
+        int dias;
+        try{
+            dias = Integer.parseInt(diasStr);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"Numero invalido");
+            return;
+        }
+        
+        
+    }
+    
+    
     
 }
