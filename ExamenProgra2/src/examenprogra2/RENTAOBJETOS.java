@@ -56,6 +56,26 @@ public class RENTAOBJETOS extends JFrame {
               }
              });
             
+            btnRentar.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    rentarItem();
+                }
+            });
+            
+            btnSubmenu.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    ejecutarSubmenu();
+                }
+            });
+            
+            btnImprimir.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    ImprimirTodo();
+                }
+            });
             
             btnSalir.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -176,6 +196,18 @@ public class RENTAOBJETOS extends JFrame {
         }
     }
     
+    private void ImprimirTodo(){
+        if(items.isEmpty()){
+            textArea.setText("No hay items\n");
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        for(RentItem r: items){
+            sb.append("---------------");
+            sb.append(r.toString()).append("\n");
+        }
+        textArea.setText(sb.toString());
+    }
     
     
 }
