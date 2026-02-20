@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package examenprogra2;
 
-/**
- *
- * @author Dell
- */
-public class GAME {
+import java.util.*;
+import javax.swing.*;
+
+public class GAME extends JFrame {
+    
+   
     
 }
