@@ -17,13 +17,15 @@ import javax.swing.JTextArea;
 public class RENTAOBJETOS extends JFrame {
     private JTextArea textArea;
     private ArrayList<RentItem>items;
-    
+    private JPanel itemsPanel;
     
     public RENTAOBJETOS(){
         iniciar();
     }
     
     private void iniciar(){
+        items = new ArrayList<>();
+        setLayout(new BorderLayout(10,10));
         setTitle("Renta de Objetos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,400);
@@ -34,54 +36,26 @@ public class RENTAOBJETOS extends JFrame {
         JScrollPane scrollPane = new JScrollPane(textArea);
         add(scrollPane,BorderLayout.CENTER);
         
-        JPanel buttonPanel = new JPanel(new GridLayout(1,5,5,5));
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new GridLayout(5,1,10,10));
         JButton btnAgregar = new JButton("Agregar");
         JButton btnRentar=new JButton ("Rentar");
         JButton btnSubmenu= new JButton("Submenu");
         JButton btnImprimir= new JButton ("Imprimir Todo");
         JButton btnSalir = new JButton ("Salir");
+              
+        centerPanel.add(btnAgregar);
+        centerPanel.add(btnRentar);
+        centerPanel.add(btnSubmenu);
+        centerPanel.add(btnImprimir);
+        centerPanel.add(btnSalir);
+        add(centerPanel, BorderLayout.CENTER);
         
-        buttonPanel.add(btnAgregar);
-        buttonPanel.add(btnRentar);
-        buttonPanel.add(btnSubmenu);
-        buttonPanel.add(btnImprimir);
-        buttonPanel.add(btnSalir);
-        add(buttonPanel, BorderLayout.SOUTH);
-        
-        
-            btnAgregar.addActionListener(new ActionListener() {
-              @Override
-               public void actionPerformed(ActionEvent e) {
-               agregarItem();
-              }
-             });
-            
-            btnRentar.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    rentarItem();
-                }
-            });
-            
-            btnSubmenu.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    ejecutarSubmenu();
-                }
-            });
-            
-            btnImprimir.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    ImprimirTodo();
-                }
-            });
-            
-            btnSalir.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    System.exit(0);
-                }
-            });
+        btnAgregar.addActionListener(e -> agregarItem());
+        btnRentar.addActionListener(e -> rentarItem());
+        btnSubmenu.addActionListener(e -> ejecutarSubmenu());
+        btnImprimir.addActionListener(e -> ImprimirTodo());
+        btnSalir.addActionListener(e -> System.exit(0));
     }
     
     
