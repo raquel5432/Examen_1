@@ -29,7 +29,9 @@ public class GAME extends RentItem implements MenuActions{
 
     
     public void setFechaPublicacion(int y, int m, int d){
-        fechaPublicacion.set(y, m - 1, d);
+    fechaPublicacion.set(Calendar.YEAR, y);
+    fechaPublicacion.set(Calendar.MONTH, m - 1);
+    fechaPublicacion.set(Calendar.DAY_OF_MONTH, d);;
     }
     
     public void listEspecificaciones() {
@@ -68,13 +70,22 @@ public class GAME extends RentItem implements MenuActions{
     public void ejecutarOpcion(int opcion) {
         switch(opcion) {
             case 1:
-                int y = Integer.parseInt(JOptionPane.showInputDialog("Anio:"));
-                int m = Integer.parseInt(JOptionPane.showInputDialog("Mes:"));
-                int d = Integer.parseInt(JOptionPane.showInputDialog("Dia:"));
-                setFechaPublicacion(y, m, d);
-                JOptionPane.showMessageDialog(null, "Fecha actualizada.");
-                break;
+                try {
+               int y = Integer.parseInt(JOptionPane.showInputDialog("Año:"));
+               int m = Integer.parseInt(JOptionPane.showInputDialog("Mes:"));
+               int d = Integer.parseInt(JOptionPane.showInputDialog("Día:"));
+               setFechaPublicacion(y, m, d);
+
+               JOptionPane.showMessageDialog(null, 
+                   "Fecha actualizada a: " + 
+                   fechaPublicacion.get(Calendar.DAY_OF_MONTH) + "/" +
+                   (fechaPublicacion.get(Calendar.MONTH) + 1) + "/" +
+                   fechaPublicacion.get(Calendar.YEAR));
+           } catch(Exception ex) {
+               JOptionPane.showMessageDialog(null, "Fecha inválida");
+           }
                 
+           break;
             case 2:
                 String esp= JOptionPane.showInputDialog("Nueva especificacion:");
                 especificaciones.add(esp);

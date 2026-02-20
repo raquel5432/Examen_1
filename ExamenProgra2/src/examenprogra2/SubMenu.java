@@ -18,6 +18,8 @@ public class SubMenu extends JFrame {
 
         if(item instanceof MenuActions){
             ((MenuActions)item).subMenu();
+             JOptionPane.showMessageDialog(this, "Operación completada");
+
         } else {
             JOptionPane.showMessageDialog(this,"Este item no tiene submenu");
         }
