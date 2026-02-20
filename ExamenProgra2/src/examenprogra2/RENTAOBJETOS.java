@@ -159,7 +159,22 @@ public class RENTAOBJETOS extends JFrame {
         
     }
     
-    
+    private void ejecutarSubmenu(){
+        String cod = JOptionPane.showInputDialog(this,"Codigo dle item: ");
+        if(cod==null)return;
+        RentItem r = buscar(cod);
+        
+        if(r ==null){
+            JOptionPane.showMessageDialog(this,"Item no existe");
+            return;
+        }
+        
+        if(r instanceof MenuActions){
+            ((MenuActions)r).subMenu();
+        }else{
+            JOptionPane.showMessageDialog(this,"Este item no tiene submenu.");
+        }
+    }
     
     
     
