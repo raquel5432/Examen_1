@@ -16,7 +16,7 @@ public class ClaseMovie extends RentItem {
     private Calendar fechaEstreno;
 
     public ClaseMovie(String Code, String Name, double precioBase, int copies, ImageIcon image) {
-        super(Code, Name, precioBase, copies, image);
+        super(Code, Name, precioBase, 0, image);
         this.fechaEstreno = Calendar.getInstance();
     }
 
@@ -56,28 +56,24 @@ public class ClaseMovie extends RentItem {
        return total;
     }
 
-    @Override
-    public double pagoRenta(int dias) {
-        
-        if (dias <= 0){
-            return 0;
-        }
+        @Override
+        public double pagoRenta(int dias) {
+            if (dias <= 0) return 0;
 
-        double total = precioBase *dias;
-        
-        if (getEstado().equals("ESTRENO")) {
-            if (dias > 2) {
-                total += (dias - 2) * 50.0; 
-             }
+            if (getEstado().equals("ESTRENO")) {
+                if (dias <= 2) {
+                    return precioBase * dias;
+                } else {
+                    return (precioBase * 2) + ((dias - 2) * 50);
+                }
+            } else { // NORMAL
+                if (dias <= 5) {
+                    return precioBase * dias;
+                } else {
+                    return (precioBase * 5) + ((dias - 5) * 30);
+                }
+            }
         }
-             
-   
-        else if (getEstado().equals("NORMAL")) {
-            if (dias > 5) {
-                total += (dias - 5) * 30.0;
-            }              
-        }return total;
-    }
     
     @Override
     public String toString() {

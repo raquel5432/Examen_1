@@ -11,7 +11,7 @@ public class GAME extends RentItem implements MenuActions{
     private ArrayList<String> especificaciones;
     
     public GAME(String codigo, String nombre, ImageIcon imagen){
-        super(codigo, nombre, 20, 1, imagen);
+        super(codigo, nombre, 20, 0, imagen);
         fechaPublicacion = Calendar.getInstance();
         especificaciones = new ArrayList<>();
     }
@@ -19,6 +19,14 @@ public class GAME extends RentItem implements MenuActions{
     public void setFechaPublicacion(int y, int m, int d){
         fechaPublicacion.set(y, m - 1, d);
     }
+    
+    public void listEspecificaciones() {
+    if(especificaciones.isEmpty()){
+        JOptionPane.showMessageDialog(null, "No hay especificaciones.");
+    } else {
+        mostrarEspecificacionesRec(0, "");
+    }
+}
     
     @Override
     public double pagoRenta(int dias){
@@ -62,11 +70,7 @@ public class GAME extends RentItem implements MenuActions{
                 break;
                 
             case 3:
-                if(especificaciones.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "No hay especificaciones.");
-                } else {
-                    mostrarEspecificacionesRec(0, "");
-                }
+                listEspecificaciones();
                 break;
                 
             default:

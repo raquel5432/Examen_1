@@ -79,8 +79,14 @@ public class VENTANARENTAR extends JFrame {
 
         double total = r.pagoRenta(dias);
 
-        JOptionPane.showMessageDialog(this,r.toString() + "\nTotal a pagar: L."+total,
-                "Renta", JOptionPane.INFORMATION_MESSAGE, r.getImaged());
+            JPanel panel = new JPanel(new BorderLayout(10,10));
+            JLabel lblImagen = new JLabel(r.getImaged());
+            JTextArea txtInfo = new JTextArea(r.toString() + "\nTotal a pagar: L."+total);
+            txtInfo.setEditable(false);
+            panel.add(lblImagen, BorderLayout.WEST);
+            panel.add(txtInfo, BorderLayout.CENTER);
+
+            JOptionPane.showMessageDialog(this, panel, "Renta", JOptionPane.INFORMATION_MESSAGE);
 
         textArea.append("Renta de " + cod + " por " + dias + " dias: TOTAL L."+total+"\n");
         dispose();
