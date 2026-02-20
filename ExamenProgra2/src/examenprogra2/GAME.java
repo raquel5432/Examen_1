@@ -1,15 +1,13 @@
 
 package examenprogra2;
 
+import java.util.Calendar;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-public class Game {
-=======
-public class GAME  {
-=======
->>>>>>> 3fafbea04d5c757f575b385c3addfddbe2686d9c
+
+
 
 
 public class GAME extends RentItem implements MenuActions{
@@ -21,7 +19,6 @@ public class GAME extends RentItem implements MenuActions{
         fechaPublicacion = Calendar.getInstance();
         especificaciones = new ArrayList<>();
     }
->>>>>>> 21d3c6fecd88ffebb40cbee6c2344af25b066e00
     
     public void setFechaPublicacion(int y, int m, int d){
         fechaPublicacion.set(y, m - 1, d);
