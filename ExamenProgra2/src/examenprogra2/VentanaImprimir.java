@@ -11,7 +11,7 @@ public class VentanaImprimir extends JFrame {
         setSize(600,500);
         setLocationRelativeTo(null);
         
-        // Panel principal con scroll
+      
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         
@@ -19,7 +19,8 @@ public class VentanaImprimir extends JFrame {
             mainPanel.add(new JLabel("No hay items"));
         } else {
             for(RentItem r : items){
-                // Crear tarjeta para cada item
+                
+                
                 JPanel card = new JPanel(new BorderLayout(10,10));
                 card.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 card.setMaximumSize(new Dimension(550, 150));
@@ -44,7 +45,6 @@ public class VentanaImprimir extends JFrame {
                     lblImagen.setBorder(BorderFactory.createLineBorder(Color.RED));
                 }
                 
-                // Información
                 JTextArea txtInfo = new JTextArea();
                 txtInfo.setEditable(false);
                 

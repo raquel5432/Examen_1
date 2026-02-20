@@ -82,17 +82,26 @@ public class AGREGAR extends JFrame {
             }
         }
 
-            ImageIcon img = null;
+            JLabel lblImagen = new JLabel();
+            lblImagen.setPreferredSize(new Dimension(100, 100));
+            lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
+            lblImagen.setVerticalAlignment(SwingConstants.CENTER);
+            lblImagen.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
             try {
-                img = new ImageIcon(ruta);
-                if(img.getIconWidth() == -1) { // Imagen no cargó correctamente
-                    JOptionPane.showMessageDialog(this, "Ruta de imagen inválida, se usará ícono por defecto");
-                    img = new ImageIcon(); // Imagen vacía
+                ImageIcon imgOriginal = r.getImaged();
+                if(imgOriginal != null && imgOriginal.getImage() != null) {
+                    Image imagenEscalada = imgOriginal.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                    lblImagen.setIcon(new ImageIcon(imagenEscalada));
+                    lblImagen.setText(""); // Quitar texto si hay imagen
+                } else {
+                    lblImagen.setText("Sin imagen");
                 }
-            } catch(Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error al cargar imagen, se usará ícono por defecto");
-                img = new ImageIcon();
+            } catch (Exception ex) {
+                lblImagen.setText("Error");
             }
+            
+            
             if(tipo.equals("Movie")){
                try{
                    double precio = Double.parseDouble(txtPrecio.getText());
