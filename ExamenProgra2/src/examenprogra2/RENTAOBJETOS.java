@@ -49,7 +49,14 @@ public class RENTAOBJETOS extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
         
         
-
+            btnAgregar.addActionListener(new ActionListener() {
+              @Override
+               public void actionPerformed(ActionEvent e) {
+               agregarItem();
+              }
+             });
+            
+            
             btnSalir.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     System.exit(0);
@@ -115,6 +122,13 @@ public class RENTAOBJETOS extends JFrame {
         
     }
 
+    
+    private RentItem buscar(String cod){
+        for(RentItem r : items){
+            if(r.getCode().equals(cod)) return r;
+        }
+        return null;
+    }
     
     
 }
